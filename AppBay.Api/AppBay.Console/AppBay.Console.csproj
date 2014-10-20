@@ -72,8 +72,8 @@
     <Compile Include="AppBayService.svc.cs">
       <DependentUpon>AppBayService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaseCollectionEntity.cs" />
     <Compile Include="Models\Entities.cs" />
-    <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\JobDescription.cs" />
     <Compile Include="Models\JobResult.cs" />
     <Compile Include="Models\Package.cs" />

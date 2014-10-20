@@ -1,30 +1,25 @@
 ﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
   <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
     <Schema Namespace="AppBay.Console.Models" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
-      <EntityType Name="JobDescription">
+      <EntityType Name="BaseCollectionEntity">
         <Key>
-          <PropertyRef Name="JobId" />
+          <PropertyRef Name="Id" />
         </Key>
-        <Property Name="JobId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Id" Type="Edm.String" Nullable="false" />
+      </EntityType>
+      <EntityType Name="JobDescription" BaseType="AppBay.Console.Models.BaseCollectionEntity">
         <Property Name="PackageId" Type="Edm.Int32" Nullable="false" />
         <Property Name="Description" Type="Edm.String" />
         <Property Name="Added" Type="Edm.DateTime" Nullable="false" />
         <Property Name="Started" Type="Edm.DateTime" />
         <Property Name="IsRunning" Type="Edm.Boolean" Nullable="false" />
       </EntityType>
-      <EntityType Name="Package">
-        <Key>
-          <PropertyRef Name="PackageId" />
-        </Key>
+      <EntityType Name="Package" BaseType="AppBay.Console.Models.BaseCollectionEntity">
         <Property Name="PackageId" Type="Edm.Int32" Nullable="false" />
         <Property Name="Description" Type="Edm.String" />
         <Property Name="TargetClassName" Type="Edm.String" />
       </EntityType>
-      <EntityType Name="JobResult">
-        <Key>
-          <PropertyRef Name="JobResultId" />
-        </Key>
-        <Property Name="JobResultId" Type="Edm.Int32" Nullable="false" />
+      <EntityType Name="JobResult" BaseType="AppBay.Console.Models.BaseCollectionEntity">
         <Property Name="Description" Type="Edm.String" />
         <Property Name="Started" Type="Edm.DateTime" Nullable="false" />
         <Property Name="Finished" Type="Edm.DateTime" Nullable="false" />
