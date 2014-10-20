@@ -1,0 +1,42 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="AppBay.Console.Models" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <EntityType Name="JobDescription">
+        <Key>
+          <PropertyRef Name="JobId" />
+        </Key>
+        <Property Name="JobId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PackageId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="Added" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Started" Type="Edm.DateTime" />
+        <Property Name="IsRunning" Type="Edm.Boolean" Nullable="false" />
+      </EntityType>
+      <EntityType Name="Package">
+        <Key>
+          <PropertyRef Name="PackageId" />
+        </Key>
+        <Property Name="PackageId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="TargetClassName" Type="Edm.String" />
+      </EntityType>
+      <EntityType Name="JobResult">
+        <Key>
+          <PropertyRef Name="JobResultId" />
+        </Key>
+        <Property Name="JobResultId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="Started" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Finished" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="IsSuccess" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="ErrorMessage" Type="Edm.String" />
+        <Property Name="SerializedResult" Type="Edm.String" />
+      </EntityType>
+      <EntityContainer Name="Entities" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Jobs" EntityType="AppBay.Console.Models.JobDescription" />
+        <EntitySet Name="Packages" EntityType="AppBay.Console.Models.Package" />
+        <EntitySet Name="JobResults" EntityType="AppBay.Console.Models.JobResult" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
