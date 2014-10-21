@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Services.Client;
 using System.Linq;
 using AppBay.Tests.DataServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -36,7 +37,6 @@ namespace AppBay.Tests
       {
         Added = DateTime.Now,
         Description = "Some job",
-        IsRunning = false,
         PackageId = 200,
         Started = null
       };
@@ -58,6 +58,45 @@ namespace AppBay.Tests
       context.AddToPackages(package);
       context.SaveChanges();
       Assert.IsTrue(true);
+    }
+
+    [TestMethod]
+    public void UpdateJobs()
+    {
+      var context = GetContext();
+      var job = context.Jobs.FirstOrDefault();
+      Assert.IsNotNull(job);
+      var id = job.Id;
+      var newDescription = "Some new dummy description" + Guid.NewGuid();
+      job.Description = newDescription;
+      context.UpdateObject(job);
+      context.SaveChanges();
+      context = GetContext();
+      // ReSharper disable once ReplaceWithSingleCallToFirstOrDefault
+      var modifiedJob = context.Jobs.Where(p => p.Id == id).FirstOrDefault();
+      Assert.IsNotNull(modifiedJob);
+      Assert.AreEqual(newDescription, modifiedJob.Description);
+    }
+
+    [TestMethod, ExpectedException(typeof(DataServiceRequestException))]
+    public void UpdateJobIsRunning()
+    {
+      PostToJobs();
+      PostToJobs();
+      var context = GetContext();
+      var job = context.Jobs.FirstOrDefault();
+      Assert.IsNotNull(job);
+      job.IsRunning = !job.IsRunning;
+      context.SaveChanges();
+    }
+
+    [TestMethod, ExpectedException(typeof(DataServiceRequestException))]
+    public void PostIntoJobResults()
+    {
+      var context = GetContext();
+      var jobResult = new JobResult();
+      context.AddToJobResults(jobResult);
+      context.SaveChanges();
     }
 
     private Entities GetContext()

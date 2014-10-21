@@ -1,11 +1,10 @@
 using System;
-using System.Data.Services.Common;
 
 namespace AppBay.Console.Models
 {
   public class JobResult : BaseCollectionEntity
   {
-    public JobResult() : base("results")
+    public JobResult() : base("Results")
     {
     }
 

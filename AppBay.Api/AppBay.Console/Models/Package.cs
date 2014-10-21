@@ -2,7 +2,7 @@ namespace AppBay.Console.Models
 {
   public class Package : BaseCollectionEntity
   {
-    public Package() : base("packages")
+    public Package() : base("Packages")
     {
     }
 

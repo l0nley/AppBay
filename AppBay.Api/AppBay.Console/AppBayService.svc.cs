@@ -10,7 +10,9 @@ namespace AppBay.Console
   {
     public static void InitializeService(DataServiceConfiguration config)
     {
-      config.SetEntitySetAccessRule("*", EntitySetRights.All);
+      config.SetEntitySetAccessRule("Jobs", EntitySetRights.All);
+      config.SetEntitySetAccessRule("JobResults", EntitySetRights.AllRead);
+      config.SetEntitySetAccessRule("Packages", EntitySetRights.All);
       config.SetServiceOperationAccessRule("*", ServiceOperationRights.All);
       config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
       config.UseVerboseErrors = true;

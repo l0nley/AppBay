@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Data.Services;
 using System.Linq;
 using MongoDB.Bson;
@@ -10,19 +11,21 @@ namespace AppBay.Console.Models
 {
   public class Entities : IUpdatable
   {
+    private readonly object _lock = new object();
+    private const string[] ReadOnlyProperties
+
+    private MongoDatabase _cachedDatabase;
+
     public IQueryable<JobDescription> Jobs
     {
-      get
-      {
-        return GetDb().GetCollection<JobDescription>("jobs").AsQueryable();
-      }
+      get { return GetDb().GetCollection<JobDescription>("Jobs").AsQueryable(); }
     }
 
     public IQueryable<Package> Packages
     {
       get
       {
-        return GetDb().GetCollection<Package>("packages").AsQueryable();
+        return GetDb().GetCollection<Package>("Packages").AsQueryable();
       }
     }
 
@@ -30,7 +33,7 @@ namespace AppBay.Console.Models
     {
       get
       {
-        return GetDb().GetCollection<JobResult>("results").AsQueryable();
+        return GetDb().GetCollection<JobResult>("Results").AsQueryable();
       }
     }
 
@@ -45,7 +48,16 @@ namespace AppBay.Console.Models
 
     public object GetResource(IQueryable query, string fullTypeName)
     {
-      throw new System.NotImplementedException();
+      var b = query.Provider.Execute(query.Expression);
+      if (!(b is IEnumerable))
+      {
+        return b;
+      }
+
+      var enumerator = (b as IEnumerable).GetEnumerator();
+      enumerator.MoveNext();
+      var c = enumerator.Current;
+      return c;
     }
 
     public object ResetResource(object resource)
@@ -102,7 +114,7 @@ namespace AppBay.Console.Models
 
     public object ResolveResource(object resource)
     {
-      // No special processing needed in this case
+      // No special processing needed in this case // TODO Check on update
       return resource;
     }
 
@@ -113,10 +125,19 @@ namespace AppBay.Console.Models
 
     private MongoDatabase GetDb()
     {
-      var con = new MongoClient("mongodb://localhost");
-      var server = con.GetServer();
-      var db = server.GetDatabase("Jobs");
-      return db;
+      if (_cachedDatabase != null)
+      {
+        return _cachedDatabase;
+      }
+
+      lock (_lock)
+      {
+        var con = new MongoClient("mongodb://localhost");
+        var server = con.GetServer();
+        _cachedDatabase = server.GetDatabase("Jobs");
+      }
+
+      return _cachedDatabase;
     }
 
     private static Type GetEntityType(string fullName)

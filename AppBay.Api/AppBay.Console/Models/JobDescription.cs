@@ -4,7 +4,7 @@ namespace AppBay.Console.Models
 {
   public class JobDescription : BaseCollectionEntity
   {
-    public JobDescription() : base("jobs")
+    public JobDescription() : base("Jobs")
     {
     }
 
