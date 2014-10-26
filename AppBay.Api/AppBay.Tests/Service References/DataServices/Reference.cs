@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 10/20/2014 11:47:19 PM
+// Generation date: 10/25/2014 9:49:13 PM
 namespace AppBay.Tests.DataServices
 {
     
@@ -39,7 +39,7 @@ namespace AppBay.Tests.DataServices
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "AppBay.Console.Models", "AppBay.Tests.DataServices");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "AppBay.Classes.Models", "AppBay.Tests.DataServices");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -56,7 +56,7 @@ namespace AppBay.Tests.DataServices
         {
             if (clientType.Namespace.Equals("AppBay.Tests.DataServices", global::System.StringComparison.Ordinal))
             {
-                return string.Concat("AppBay.Console.Models.", clientType.Name);
+                return string.Concat("AppBay.Classes.Models.", clientType.Name);
             }
             return clientType.FullName;
         }
@@ -144,27 +144,29 @@ namespace AppBay.Tests.DataServices
             private const string ModelPart0 = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"http://schemas.microsoft.com/ado/2007/06/edm" +
                 "x\"><edmx:DataServices m:DataServiceVersion=\"1.0\" m:MaxDataServiceVersion=\"3.0\" x" +
                 "mlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><Schema " +
-                "Namespace=\"AppBay.Console.Models\" xmlns=\"http://schemas.microsoft.com/ado/2006/0" +
+                "Namespace=\"AppBay.Classes.Models\" xmlns=\"http://schemas.microsoft.com/ado/2006/0" +
                 "4/edm\"><EntityType Name=\"BaseCollectionEntity\"><Key><PropertyRef Name=\"Id\" /></K" +
                 "ey><Property Name=\"Id\" Type=\"Edm.String\" Nullable=\"false\" /></EntityType><Entity" +
-                "Type Name=\"JobDescription\" BaseType=\"AppBay.Console.Models.BaseCollectionEntity\"" +
+                "Type Name=\"JobDescription\" BaseType=\"AppBay.Classes.Models.BaseCollectionEntity\"" +
                 "><Property Name=\"PackageId\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"" +
-                "Description\" Type=\"Edm.String\" /><Property Name=\"Added\" Type=\"Edm.DateTime\" Null" +
-                "able=\"false\" /><Property Name=\"Started\" Type=\"Edm.DateTime\" /><Property Name=\"Is" +
-                "Running\" Type=\"Edm.Boolean\" Nullable=\"false\" /></EntityType><EntityType Name=\"Pa" +
-                "ckage\" BaseType=\"AppBay.Console.Models.BaseCollectionEntity\"><Property Name=\"Pac" +
-                "kageId\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Description\" Type=\"E" +
-                "dm.String\" /><Property Name=\"TargetClassName\" Type=\"Edm.String\" /></EntityType><" +
-                "EntityType Name=\"JobResult\" BaseType=\"AppBay.Console.Models.BaseCollectionEntity" +
-                "\"><Property Name=\"Description\" Type=\"Edm.String\" /><Property Name=\"Started\" Type" +
-                "=\"Edm.DateTime\" Nullable=\"false\" /><Property Name=\"Finished\" Type=\"Edm.DateTime\"" +
-                " Nullable=\"false\" /><Property Name=\"IsSuccess\" Type=\"Edm.Boolean\" Nullable=\"fals" +
-                "e\" /><Property Name=\"ErrorMessage\" Type=\"Edm.String\" /><Property Name=\"Serialize" +
-                "dResult\" Type=\"Edm.String\" /></EntityType><EntityContainer Name=\"Entities\" m:IsD" +
-                "efaultEntityContainer=\"true\"><EntitySet Name=\"Jobs\" EntityType=\"AppBay.Console.M" +
-                "odels.JobDescription\" /><EntitySet Name=\"Packages\" EntityType=\"AppBay.Console.Mo" +
-                "dels.Package\" /><EntitySet Name=\"JobResults\" EntityType=\"AppBay.Console.Models.J" +
-                "obResult\" /></EntityContainer></Schema></edmx:DataServices></edmx:Edmx>";
+                "Description\" Type=\"Edm.String\" /><Property Name=\"SerializedInput\" Type=\"Edm.Stri" +
+                "ng\" /><Property Name=\"Added\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Property Na" +
+                "me=\"Started\" Type=\"Edm.DateTime\" /><Property Name=\"IsRunning\" Type=\"Edm.Boolean\"" +
+                " Nullable=\"false\" /></EntityType><EntityType Name=\"Package\" BaseType=\"AppBay.Cla" +
+                "sses.Models.BaseCollectionEntity\"><Property Name=\"PackageId\" Type=\"Edm.Int32\" Nu" +
+                "llable=\"false\" /><Property Name=\"Description\" Type=\"Edm.String\" /><Property Name" +
+                "=\"TargetClassName\" Type=\"Edm.String\" /><Property Name=\"Payload\" Type=\"Edm.Binary" +
+                "\" /></EntityType><EntityType Name=\"JobResult\" BaseType=\"AppBay.Classes.Models.Ba" +
+                "seCollectionEntity\"><Property Name=\"Description\" Type=\"Edm.String\" /><Property N" +
+                "ame=\"Started\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Property Name=\"Finished\" T" +
+                "ype=\"Edm.DateTime\" Nullable=\"false\" /><Property Name=\"IsSuccess\" Type=\"Edm.Boole" +
+                "an\" Nullable=\"false\" /><Property Name=\"ErrorMessage\" Type=\"Edm.String\" /><Proper" +
+                "ty Name=\"SerializedResult\" Type=\"Edm.String\" /></EntityType><EntityContainer Nam" +
+                "e=\"Entities\" m:IsDefaultEntityContainer=\"true\"><EntitySet Name=\"Jobs\" EntityType" +
+                "=\"AppBay.Classes.Models.JobDescription\" /><EntitySet Name=\"Packages\" EntityType=" +
+                "\"AppBay.Classes.Models.Package\" /><EntitySet Name=\"JobResults\" EntityType=\"AppBa" +
+                "y.Classes.Models.JobResult\" /></EntityContainer></Schema></edmx:DataServices></e" +
+                "dmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -197,7 +199,7 @@ namespace AppBay.Tests.DataServices
         }
     }
     /// <summary>
-    /// There are no comments for AppBay.Console.Models.BaseCollectionEntity in the schema.
+    /// There are no comments for AppBay.Classes.Models.BaseCollectionEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
@@ -250,7 +252,7 @@ namespace AppBay.Tests.DataServices
         }
     }
     /// <summary>
-    /// There are no comments for AppBay.Console.Models.JobDescription in the schema.
+    /// There are no comments for AppBay.Classes.Models.JobDescription in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
@@ -321,6 +323,28 @@ namespace AppBay.Tests.DataServices
         partial void OnDescriptionChanging(string value);
         partial void OnDescriptionChanged();
         /// <summary>
+        /// There are no comments for Property SerializedInput in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string SerializedInput
+        {
+            get
+            {
+                return this._SerializedInput;
+            }
+            set
+            {
+                this.OnSerializedInputChanging(value);
+                this._SerializedInput = value;
+                this.OnSerializedInputChanged();
+                this.OnPropertyChanged("SerializedInput");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _SerializedInput;
+        partial void OnSerializedInputChanging(string value);
+        partial void OnSerializedInputChanged();
+        /// <summary>
         /// There are no comments for Property Added in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -388,7 +412,7 @@ namespace AppBay.Tests.DataServices
         partial void OnIsRunningChanged();
     }
     /// <summary>
-    /// There are no comments for AppBay.Console.Models.Package in the schema.
+    /// There are no comments for AppBay.Classes.Models.Package in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
@@ -476,9 +500,38 @@ namespace AppBay.Tests.DataServices
         private string _TargetClassName;
         partial void OnTargetClassNameChanging(string value);
         partial void OnTargetClassNameChanged();
+        /// <summary>
+        /// There are no comments for Property Payload in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public byte[] Payload
+        {
+            get
+            {
+                if ((this._Payload != null))
+                {
+                    return ((byte[])(this._Payload.Clone()));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                this.OnPayloadChanging(value);
+                this._Payload = value;
+                this.OnPayloadChanged();
+                this.OnPropertyChanged("Payload");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private byte[] _Payload;
+        partial void OnPayloadChanging(byte[] value);
+        partial void OnPayloadChanged();
     }
     /// <summary>
-    /// There are no comments for AppBay.Console.Models.JobResult in the schema.
+    /// There are no comments for AppBay.Classes.Models.JobResult in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id

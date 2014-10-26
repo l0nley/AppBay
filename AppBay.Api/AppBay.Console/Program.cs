@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Services;
+using AppBay.ApiEnd;
 
 namespace AppBay.Console
 {
@@ -9,15 +10,10 @@ namespace AppBay.Console
     {
       var serviceType = typeof(AppBayService);
       var baseAddress = new Uri("http://localhost:6000/");
-      var baseAddresses = new[] { baseAddress };
-
-      // Create a new hosting instance for the Northwind 
-      // data service at the specified address. 
-      var host = new DataServiceHost(
-         serviceType,
-         baseAddresses);
+      var host = new DataServiceHost(serviceType, new[] { baseAddress });
+      
       host.Open();
-
+      
       // Keep the data service host open while the console is open. 
       System.Console.WriteLine(
         "Navigate to the following URI to see the service.");

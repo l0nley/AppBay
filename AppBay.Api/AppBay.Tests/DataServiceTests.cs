@@ -78,16 +78,20 @@ namespace AppBay.Tests
       Assert.AreEqual(newDescription, modifiedJob.Description);
     }
 
-    [TestMethod, ExpectedException(typeof(DataServiceRequestException))]
+    [TestMethod]
     public void UpdateJobIsRunning()
     {
       PostToJobs();
       PostToJobs();
       var context = GetContext();
-      var job = context.Jobs.FirstOrDefault();
+      // ReSharper disable once ReplaceWithSingleCallToFirstOrDefault
+      var job = context.Jobs.Where(l => l.IsRunning == false).FirstOrDefault();
       Assert.IsNotNull(job);
-      job.IsRunning = !job.IsRunning;
+      job.IsRunning = true;
+      context.UpdateObject(job);
       context.SaveChanges();
+      var otherJob = GetContext().Jobs.Where(l => l.Id == job.Id).First();
+      Assert.AreEqual(false,otherJob.IsRunning);
     }
 
     [TestMethod, ExpectedException(typeof(DataServiceRequestException))]

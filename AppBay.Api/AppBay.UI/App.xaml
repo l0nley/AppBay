@@ -1,0 +1,12 @@
+﻿<Application
+    x:Class="AppBay.UI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppBay.UI"
+    xmlns:localData="using:AppBay.UI.Data">
+
+    <Application.Resources>
+        <!-- Application-specific resources -->
+        <x:String x:Key="AppName">AppBay Reporting services</x:String>
+    </Application.Resources>
+</Application>
